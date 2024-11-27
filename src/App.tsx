@@ -1,11 +1,18 @@
-import './App.css'
+import "./App.css";
+import Player from "./components/Player";
 
 function App() {
   return (
-    <>
-      <h1>Tic-Tac-Toe App</h1>
-    </>
-  )
+    <main>
+      <div id="game-container">
+        <ol id="players">
+          <Player initialName="Player 1" symbol="X" />
+          <Player initialName="Player 2" symbol="O" />
+        </ol>
+        GameBoard
+      </div>
+    </main>
+  );
 }
 
-export default App
+export default App;
