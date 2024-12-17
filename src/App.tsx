@@ -5,6 +5,7 @@ import Gameboard from "./components/Gameboard";
 import Log from "./components/Log";
 import { WINNING_COMBINATIONS } from "./components/winning-combinations";
 import GameOver from "./components/GameOver";
+import Header from "./components/Header";
 
 const initialGameboard: (null | "X" | "O")[][] = [
   [null, null, null],
@@ -91,6 +92,7 @@ function App() {
 
   return (
     <main>
+      <Header />
       <div id="game-container">
         <ol id="players" className="highlight-player">
           <Player
