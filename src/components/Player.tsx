@@ -2,15 +2,21 @@ import { useState } from "react";
 
 interface PlayerProps {
   initialName: string;
-  symbol: string;
+  symbol: "X" | "O";
+  isActive?: boolean;
+  onChangeName: (symbol: "X" | "O", newName: string) => void;
 }
 
-function Player({ initialName, symbol }: PlayerProps) {
+function Player({ initialName, symbol, isActive, onChangeName }: PlayerProps) {
   const [playerName, setPlayerName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEditClick() {
     setIsEditing((isEditing) => !isEditing);
+    
+    if(isEditing){
+    onChangeName(symbol,playerName);
+    }
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -33,7 +39,7 @@ function Player({ initialName, symbol }: PlayerProps) {
   }
 
   return (
-    <li>
+    <li className={isActive ? 'active' : undefined}>
       <span className="Player">
         {editablePlayerName}
         <span className="player-symbol">{symbol}</span>
